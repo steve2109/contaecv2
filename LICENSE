@@ -1,0 +1,54 @@
+ContaEC – End User License Agreement (EULA)
+T&M TECHNOLOGY EC – Ecuador
+Fecha: Mayo 2026
+
+Holder: T&M TECHNOLOGY EC
+Type: Proprietary Commercial License (EULA)
+Not OSI‑approved, source code not open.
+
+# SPDX-License-Identifier: LicenseRef-TM-TECHNOLOGY-EC-ContaEC-Commercial
+
+
+1. DEFINICIONES
+   - "ContaEC" se refiere al software ContaEC, módulos, documentación, bases de datos y componentes asociados.
+   - "Usuario" es cualquier persona o entidad que se registra, accede o utiliza ContaEC.
+
+2. REGISTRO GRATUITO
+   - El usuario puede registrarse gratuitamente en el sistema y acceder a funciones de prueba o demostración.
+   - El registro gratuito no autoriza el uso de ContaEC para la contabilidad definitiva, emisión de comprobantes oficiales ni declaraciones fiscales.
+
+3. LICENCIA COMERCIAL (PAGO)
+   - El uso completo de ContaEC (balances, reportes oficiales, facturación electrónica, declaraciones tributarias, etc.) requiere una licencia de pago emitida por T&M TECHNOLOGY EC.
+   - Cada licencia de pago es válida para un número específico de empresas/usuarios y/o para un período determinado, según el plan contratado.
+   - La licencia puede ser revocada en caso de incumplimiento de pago o de estos términos.
+
+4. PROPIEDAD INTELECTUAL
+   - ContaEC es propiedad intelectual de T&M TECHNOLOGY EC.
+   - Queda prohibida la copia, redistribución, venta, sublicencia, modificación o uso del código fuente sin autorización escrita previa.
+   - Interfaces, logos, documentación y diseño gráfico también están protegidos por derechos de autor.
+
+5. INSTALACIÓN Y SERVIDOR
+   - ContaEC se aloja en servidores propiedad o bajo control de T&M TECHNOLOGY EC, o bien en servidores locales del cliente bajo acuerdo específico.
+   - En caso de servidor local del cliente, el despliegue y mantenimiento son responsabilidad del cliente, salvo que se contrate soporte técnico.
+
+6. GARANTÍAS Y LIMITACIÓN DE RESPONSABILIDAD
+   - El software se entrega "tal cual" ("as is"), sin garantías de exactitud contable, fiscal o de rendimiento.
+   - T&M TECHNOLOGY EC no será responsable por daños directos, indirectos, lucro cesante o perjuicios derivados del uso de ContaEC.
+   - El usuario asume toda responsabilidad frente a terceros (autoridades fiscales, auditores, etc.) por la información generada.
+
+7. PRIVACIDAD Y DATOS
+   - T&M TECHNOLOGY EC se compromete a proteger los datos contables y fiscales según la legislación ecuatoriana.
+   - El tratamiento de datos se rige por la Política de Privacidad de T&M TECHNOLOGY EC, disponible en su sitio web.
+
+8. MODIFICACIONES DEL LICENCIAMIENTO
+   - T&M TECHNOLOGY EC se reserva el derecho de modificar estos términos en cualquier momento.
+   - Las modificaciones se notificarán a los usuarios registrados y entrarán en vigor para nuevos y actuales usuarios.
+
+9. LEGISLACIÓN APLICABLE
+   - Este acuerdo se rige por las leyes de la República del Ecuador.
+   - Cualquier controversia se resolverá en los tribunales competentes de Quito, Ecuador.
+
+Firma electrónica o contacto:
+T&M TECHNOLOGY EC
+Correo: contacto@tmtechnology.ec
+Sitio web: https://www.tmtechnology.ec
