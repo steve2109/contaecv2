@@ -14,7 +14,7 @@ from app.utils.antivirus import AntivirusScanner
 
 router = APIRouter()
 
-UPLOAD_DIR = "/var/lib/contaec/uploads"
+UPLOAD_DIR = "/opt/contaec/backend/uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 @router.get("/", response_model=List[schemas.EmpresaResponse])

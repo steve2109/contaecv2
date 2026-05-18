@@ -10,7 +10,7 @@ from app.models import models
 from app.schemas import schemas
 from app.routers.auth import get_current_user, get_current_admin
 from app.utils.security import sanitize_input
-from app.utils.backup import create_system_backup
+from app.utils.backup import create_backup
 
 router = APIRouter()
 limiter = Limiter(key_func=get_remote_address)
@@ -212,7 +212,7 @@ async def manual_backup(
     current_admin: models.User = Depends(get_current_admin),
     db: Session = Depends(get_db)
 ):
-    backup_path = create_system_backup()
+    backup_path = create_backup()
     
     return {
         "message": "Backup creado correctamente",

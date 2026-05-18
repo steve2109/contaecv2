@@ -12,7 +12,7 @@ from app.utils.security import decrypt_data
 
 router = APIRouter()
 
-BACKUP_DIR = "/var/lib/contaec/backups"
+BACKUP_DIR = "/opt/contaec/backend/backups"
 os.makedirs(BACKUP_DIR, exist_ok=True)
 
 @router.post("/create")

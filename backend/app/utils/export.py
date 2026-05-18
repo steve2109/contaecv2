@@ -2,9 +2,83 @@ import pandas as pd
 import xlsxwriter
 from datetime import datetime
 import os
+import io
+import csv
 
 from app.models import models
 from app.database import SessionLocal
+
+def importar_excel(file_bytes: bytes, tipo: str, empresa_id: int, db: SessionLocal):
+    """Importa datos desde un archivo Excel"""
+    df = pd.read_excel(io.BytesIO(file_bytes))
+    return _procesar_dataframe(df, tipo, empresa_id, db)
+
+def importar_csv(file_bytes: bytes, tipo: str, empresa_id: int, db: SessionLocal):
+    """Importa datos desde un archivo CSV"""
+    df = pd.read_csv(io.BytesIO(file_bytes), encoding='utf-8')
+    return _procesar_dataframe(df, tipo, empresa_id, db)
+
+def _procesar_dataframe(df, tipo: str, empresa_id: int, db: SessionLocal):
+    """Procesa un DataFrame según el tipo de importación"""
+    resultados = {"creados": 0, "errores": []}
+    
+    if tipo == "inventario":
+        for _, row in df.iterrows():
+            try:
+                producto = models.Producto(
+                    codigo=str(row.get('CÓDIGO', row.get('codigo', ''))),
+                    nombre=str(row.get('NOMBRE', row.get('nombre', ''))),
+                    descripcion=str(row.get('DESCRIPCIÓN', row.get('descripcion', ''))),
+                    categoria=str(row.get('CATEGORÍA', row.get('categoria', ''))),
+                    precio_compra=float(row.get('PRECIO COMPRA', row.get('precio_compra', 0))),
+                    precio_venta=float(row.get('PRECIO VENTA', row.get('precio_venta', 0))),
+                    stock=float(row.get('STOCK', row.get('stock', 0))),
+                    stock_minimo=float(row.get('STOCK MÍNIMO', row.get('stock_minimo', 0))),
+                    unidad_medida=str(row.get('UNIDAD', row.get('unidad_medida', 'UNIDAD'))),
+                    tiene_iva=bool(row.get('IVA', row.get('tiene_iva', True))),
+                    empresa_id=empresa_id,
+                )
+                db.add(producto)
+                resultados["creados"] += 1
+            except Exception as e:
+                resultados["errores"].append(str(e))
+    
+    elif tipo == "clientes":
+        for _, row in df.iterrows():
+            try:
+                cliente = models.Cliente(
+                    tipo_identificacion=str(row.get('TIPO ID', row.get('tipo_identificacion', 'RUC'))),
+                    identificacion=str(row.get('IDENTIFICACIÓN', row.get('identificacion', ''))),
+                    razon_social=str(row.get('RAZÓN SOCIAL', row.get('razon_social', ''))),
+                    direccion=str(row.get('DIRECCIÓN', row.get('direccion', ''))),
+                    telefono=str(row.get('TELÉFONO', row.get('telefono', ''))),
+                    email=str(row.get('EMAIL', row.get('email', ''))),
+                    empresa_id=empresa_id,
+                )
+                db.add(cliente)
+                resultados["creados"] += 1
+            except Exception as e:
+                resultados["errores"].append(str(e))
+    
+    elif tipo == "empleados":
+        for _, row in df.iterrows():
+            try:
+                empleado = models.Empleado(
+                    nombres=str(row.get('NOMBRES', row.get('nombres', ''))),
+                    apellidos=str(row.get('APELLIDOS', row.get('apellidos', ''))),
+                    cedula=str(row.get('CÉDULA', row.get('cedula', ''))),
+                    cargo=str(row.get('CARGO', row.get('cargo', ''))),
+                    departamento=str(row.get('DEPARTAMENTO', row.get('departamento', ''))),
+                    salario_base=float(row.get('SALARIO BASE', row.get('salario_base', 0))),
+                    empresa_id=empresa_id,
+                )
+                db.add(empleado)
+                resultados["creados"] += 1
+            except Exception as e:
+                resultados["errores"].append(str(e))
+    
+    db.commit()
+    return resultados
 
 def exportar_excel(tipo: str, empresa_id: int, user_id: int, db: SessionLocal) -> str:
     """Exporta datos a Excel"""

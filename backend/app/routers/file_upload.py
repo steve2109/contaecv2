@@ -9,7 +9,7 @@ from app.database import get_db
 from app.models import models
 from app.routers.auth import get_current_user
 from app.utils.antivirus import AntivirusScanner
-from app.utils.import_export import importar_excel, importar_csv, exportar_excel, exportar_csv, exportar_pdf
+from app.utils.export import importar_excel, importar_csv, exportar_excel, exportar_csv, exportar_pdf
 
 router = APIRouter()
 
